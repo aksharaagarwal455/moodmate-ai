@@ -20,7 +20,7 @@ export default function History() {
   useEffect(() => {
     document.body.style.background = '#0d0d1a';
     fetchHistory();
- }, []);
+ }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchHistory = async () => {
     const token = localStorage.getItem('token');
