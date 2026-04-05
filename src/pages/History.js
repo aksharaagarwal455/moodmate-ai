@@ -15,12 +15,6 @@ export default function History() {
   const [stats, setStats] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    document.body.style.background = '#0d0d1a';
-    fetchHistory();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   const fetchHistory = async () => {
     const token = localStorage.getItem('token');
     if (!token) { navigate('/login'); return; }
@@ -47,6 +41,12 @@ export default function History() {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    document.body.style.background = '#0d0d1a';
+    fetchHistory();
+}, [fetchHistory]);
+
+  
 
   const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleString('en-IN', {
