@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API = 'https://moodmate-backend-k3k1.onrender.com';
 export default function Signup() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
