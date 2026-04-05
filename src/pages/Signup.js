@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 export default function Signup() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -18,7 +18,7 @@ export default function Signup() {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/auth/signup', {
+      const res = await fetch(`${API}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),

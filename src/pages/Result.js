@@ -1,4 +1,4 @@
-// ✅ Result.js
+// Result.js
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { moodDisplayData } from '../utils/MoodMap';
@@ -13,8 +13,6 @@ function Result({ tracks = [], loading = false, noResult = false }) {
     if (!mood) {
       setTimeout(() => navigate('/'), 2000);
     }
-
-    
   }, [mood, navigate]);
 
   const moodData = moodDisplayData[mood];
@@ -32,16 +30,16 @@ function Result({ tracks = [], loading = false, noResult = false }) {
         boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         marginBottom: '30px'
       }}>
-        <h2>{moodData?.emoji || '🧠'} You are feeling: <strong>{mood.toUpperCase()}</strong></h2>
+        <h2>You are feeling: <strong>{mood.toUpperCase()}</strong></h2>
         <p style={{ fontStyle: 'italic', marginTop: '10px' }}>{moodData?.quote}</p>
       </div>
 
-      <h3 style={{ marginBottom: '20px' }}>🎶 Music Suggestions for Your Mood</h3>
+      <h3 style={{ marginBottom: '20px' }}>Music Suggestions for Your Mood</h3>
 
       {loading ? (
         <div className="spinner" style={{ margin: '50px auto' }} />
       ) : noResult ? (
-        <p style={{ fontSize: '1.2rem', color: '#555' }}>😔 No songs found for this mood. Try a different one!</p>
+        <p style={{ fontSize: '1.2rem', color: '#555' }}>No songs found for this mood. Try a different one!</p>
       ) : Array.isArray(tracks) && tracks.length > 0 ? (
         <div style={{
           display: 'grid',

@@ -10,16 +10,16 @@ function FaceMoodDetector({ onMoodDetected }) {
   const loadModels = async () => {
     const MODEL_URL = process.env.PUBLIC_URL + '/models';
     try {
-      setStatus('⏳ Loading AI models...');
+      setStatus(' Loading AI models...');
       // Load one at a time — more reliable than Promise.all
       await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
       await faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL);
-      setStatus('✅ Models ready!');
-      console.log("✅ Both models loaded successfully");
+      setStatus(' Models ready!');
+      console.log(" Both models loaded successfully");
       return true;
     } catch (err) {
-      console.error("❌ Model load error:", err);
-      setStatus('❌ Model load failed');
+      console.error(" Model load error:", err);
+      setStatus(' Model load failed');
       alert("Models could not be loaded. Check /public/models folder.");
       return false;
     }
@@ -54,11 +54,11 @@ function FaceMoodDetector({ onMoodDetected }) {
 
         videoRef.current.onloadedmetadata = () => {
           videoRef.current.play();
-          setStatus('📸 Look at the camera...');
+          setStatus(' Look at the camera...');
 
           setTimeout(async () => {
             try {
-              setStatus('🧠 Analyzing your expression...');
+              setStatus(' Analyzing your expression...');
 
               // Verify model is truly loaded before inference
               if (!faceapi.nets.tinyFaceDetector.isLoaded) {
@@ -77,8 +77,8 @@ function FaceMoodDetector({ onMoodDetected }) {
               if (detection?.expressions) {
                 const sorted = Object.entries(detection.expressions).sort((a, b) => b[1] - a[1]);
                 const topMood = sorted[0][0];
-                console.log("🧠 Detected Mood:", topMood, "| Confidence:", sorted[0][1]);
-                setStatus(`😊 Detected: ${topMood}`);
+                console.log(" Detected Mood:", topMood, "| Confidence:", sorted[0][1]);
+                setStatus(`Detected: ${topMood}`);
                 onMoodDetected(topMood);
               } else {
                 alert("No face detected. Make sure your face is visible and well-lit.");
@@ -93,7 +93,7 @@ function FaceMoodDetector({ onMoodDetected }) {
         };
       })
       .catch((err) => {
-        console.error("❌ Camera access error:", err);
+        console.error(" Camera access error:", err);
         alert("Camera access denied. Please allow camera permission.");
         setIsDetecting(false);
         setStatus('');
@@ -115,7 +115,7 @@ function FaceMoodDetector({ onMoodDetected }) {
             cursor: 'pointer'
           }}
         >
-          🎥 Start Mood Detection
+           Start Mood Detection
         </button>
       )}
 
@@ -130,7 +130,7 @@ function FaceMoodDetector({ onMoodDetected }) {
             height="240"
             style={{ marginTop: '20px', borderRadius: '10px', background: '#000', display: 'block' }}
           />
-          <p style={{ marginTop: '10px', fontWeight: '500' }}>{status || '⏳ Starting...'}</p>
+          <p style={{ marginTop: '10px', fontWeight: '500' }}>{status || ' Starting...'}</p>
         </div>
       )}
     </div>

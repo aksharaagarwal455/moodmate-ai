@@ -15,7 +15,7 @@ const SpotifyLoginButton = () => {
 
   return (
     <button onClick={handleSpotifyLogin} style={{ padding: '12px 24px', fontSize: '1rem' }}>
-      🎧 Login with Spotify
+       Login with Spotify
     </button>
   );
 };
