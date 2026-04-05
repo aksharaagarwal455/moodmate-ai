@@ -12,7 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import { moodDisplayData } from './utils/MoodMap';
 
 // ── Single source of truth for API URL ──────────────────────────────────────
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API = 'https://moodmate-backend-k3k1.onrender.com'
 
 function NotFound() {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API = 'https://moodmate-backend-k3k1.onrender.com';
 
 const MOOD_COLORS = {
   happy: '#fbbf24', sad: '#60a5fa', angry: '#f87171',

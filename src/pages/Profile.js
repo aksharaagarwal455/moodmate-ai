@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar';
 
 Chart.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip);
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API = 'https://moodmate-backend-k3k1.onrender.com'
 
 export default function Profile() {
   const navigate = useNavigate();
